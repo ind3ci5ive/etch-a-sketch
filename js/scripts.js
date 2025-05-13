@@ -1,9 +1,37 @@
 
 
+var button = document.getElementById("grid-button");
+button.addEventListener("click", changeGridSize);
 
+function changeGridSize() {
 
+    var userInput = prompt("Please enter single-digit grid size (i.e. 5 will create a 5x5 grid).");
 
+    if (userInput > 100) {
 
+        alert("Too big; Please keep grid size no larger than 100.");
+    }
+
+    else if (userInput <= 0) {
+
+        alert("You can't make a grid of nothing Einstein.");
+    }
+
+    else if (userInput == NaN) {
+
+        alert("Make sure you are inputting a number!")
+    }
+
+    else if (userInput % 1 != 0) {
+
+        alert("Only whole numbers please!");
+    }
+
+    else {
+
+        createGrid(userInput);
+    }
+}
 
 
 function createGrid(dimensions) {
@@ -13,6 +41,7 @@ function createGrid(dimensions) {
     // then appends them all to the row at the end of the inner loop
 
     const mainDivContainer = document.getElementById("div-container");
+    mainDivContainer.innerHTML = "";
 
     for (var i = 0; i < dimensions; i++) {
 
